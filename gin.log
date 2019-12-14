@@ -1,0 +1,41 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /test                     --> main.main.func1 (3 handlers)
+[GIN-debug] Environment variable PORT is undefined. Using port :8080 by default
+[GIN-debug] Listening and serving HTTP on :8080
+
+
+[31m2019/12/14 17:14:41 [Recovery] 2019/12/14 - 17:14:41 panic recovered:
+GET /test?name=wang HTTP/1.1
+Host: 127.0.0.1:8080
+Accept: */*
+User-Agent: curl/7.64.1
+
+
+test panic
+/Users/wangmengyu/work/code/gin-test/middleware_gin/main.go:27 (0x1504030)
+	main.func1: panic("test panic")
+/Users/wangmengyu/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/context.go:147 (0x14eedaa)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/wangmengyu/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/recovery.go:83 (0x1502513)
+	RecoveryWithWriter.func1: c.Next()
+/Users/wangmengyu/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/context.go:147 (0x14eedaa)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/wangmengyu/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/logger.go:241 (0x1501640)
+	LoggerWithConfig.func1: c.Next()
+/Users/wangmengyu/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/context.go:147 (0x14eedaa)
+	(*Context).Next: c.handlers[c.index](c)
+/Users/wangmengyu/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/gin.go:403 (0x14f8aa9)
+	(*Engine).handleHTTPRequest: c.Next()
+/Users/wangmengyu/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/gin.go:364 (0x14f819d)
+	(*Engine).ServeHTTP: engine.handleHTTPRequest(c)
+/usr/local/Cellar/go/1.13.4/libexec/src/net/http/server.go:2802 (0x12cb8b3)
+	serverHandler.ServeHTTP: handler.ServeHTTP(rw, req)
+/usr/local/Cellar/go/1.13.4/libexec/src/net/http/server.go:1890 (0x12c7154)
+	(*conn).serve: serverHandler{c.server}.ServeHTTP(w, w.req)
+/usr/local/Cellar/go/1.13.4/libexec/src/runtime/asm_amd64.s:1357 (0x105c040)
+	goexit: BYTE	$0x90	// NOP
+[0m
+[GIN] 2019/12/14 - 17:14:41 | 500 |    1.346518ms |       127.0.0.1 | GET      /test?name=wang
