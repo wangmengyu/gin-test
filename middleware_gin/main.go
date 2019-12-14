@@ -23,7 +23,7 @@ func main() {
 
 	r.GET("/test", func(c *gin.Context) {
 		name := c.DefaultQuery("name", "default name")
-		panic("test panic")
+		//panic("test panic")
 		c.String(200, "%s", name)
 	})
 
