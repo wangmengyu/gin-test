@@ -2,6 +2,9 @@ package main
 
 import "github.com/gin-gonic/gin"
 
+/**
+范绑定
+*/
 func main() {
 	r := gin.Default()
 	//所有请求/user/开头的都打到一个回调函数里
