@@ -13,6 +13,10 @@ type Person struct {
 /**
 结构体验证
 curl -X GET 'http://127.0.0.1:8080/testing?name=wang&age=19&address=shanghai'
+验证文档：
+  https://godoc.org/gopkg.in/go-playground/validator.v9
+   https://www.kancloud.cn/shuangdeyu/gin_book/949427
+
 */
 func main() {
 	r := gin.Default()
